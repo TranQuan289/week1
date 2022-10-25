@@ -1,1 +1,3 @@
-// đây là một block
+void block() {
+  // trong đây là codeBlock
+}
