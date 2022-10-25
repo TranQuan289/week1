@@ -5,20 +5,36 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  noAsyncAwait();
+  print("__Đây là lập trình đồng bộ__");
+  Synchronous(); //lập trình đồng bộ sẽ kiểu như chạy từ trên xuống dưới, chờ chạy xong rồi chạy tiếp
+  print("__Đây là lập trình bất đồng bộ__");
+  Asynchronous(); //Lập trình bất đồng bộ thì chạy luôn không có chờ rồi tí task đó xong thì quay lại
 }
 
-void noAsyncAwait() {
-  print(1);
-  print(2);
-  sleep(Duration(seconds: 3));
-  // sẽ đợi 3s mới làm tiếp cái tiếp theo
-  print(3);
+void Synchronous() {
+  print("S_task1");
+  print("S_task2");
+  Sync(); // chờ cái này chạy xong mới chạy cái tiếp theo
+  print("S_task4");
 }
 
-void AsyncAwait() {
-  print(1);
-  print(2);
-  // sẽ làm hết luôn rồi quay lại cái await khi nó thực hiện xong kk
-  print(3);
+void Asynchronous() {
+  print("A_task1");
+  print("A_task2");
+  Async(); // chạy tiếp cái tiếp theo, nào xong thì quay lại
+  print("A_task4");
+}
+
+void Sync() {
+  sleep(Duration(seconds: 4));
+  print("S_task3");
+}
+
+Future<void> Async() async {
+  try {
+    await Future.delayed(Duration(seconds: 4));
+    print("A_task3");
+  } catch (e) {
+    print(e);
+  }
 }

@@ -24,16 +24,19 @@ class Winter extends Work {
 class Fox implements Worked, Winter {
   @override
   void doHomeWorked() {
+    // method này kế thừa từ abstract class Worked
     print("doHomeWork");
   }
 
   @override
   void doSomeThing() {
+    // method này kế thừa từ class Winter
     print("doSomeThing");
   }
 
   @override
   void doHomeWork() {
+    // method này kế thừa từ  class Winter
     print("doHomeWorkChange");
   }
 }
