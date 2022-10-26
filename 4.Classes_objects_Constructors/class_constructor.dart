@@ -40,6 +40,18 @@ void main(List<String> args) {
   constructorRequiredvsOptional requiredvsOptional2 =
       constructorRequiredvsOptional(1, 2, 4);
   print(requiredvsOptional2.runtimeType);
+  //khi không xài Redirecting thì nó như là constructor bình thường
+  constructorsRedirecting redirecting = constructorsRedirecting(1, 3, 4);
+  print(redirecting.runtimeType);
+  //Khi xài constructorsRedirecting.withoutC thì ta chỉ nhập 2 giá trị a,b còn lại giá trị c đã được set trước không thay đổi dc
+  constructorsRedirecting redirectingC = constructorsRedirecting.withoutC(1, 3);
+  print(redirectingC.runtimeType);
+  //Khi xài constructorsRedirecting.withoutBC thì ta chỉ nhập giá trị a còn lại giá trị b,c đã được set trước không thay đổi dc
+  constructorsRedirecting redirectingBC = constructorsRedirecting.withoutBC(1);
+  print(redirectingBC.runtimeType);
+  //khi mình xài constructorFactoryUser.user("Admin") thì thì nó sẽ trả về class Admin từ đó mình có thể lấy dữ liệu ở trong class Admin đó
+  constructorFactoryUser cfactory = constructorFactoryUser.user("Admin");
+  print(cfactory.level);
 }
 
 class constructorAuto {
@@ -82,9 +94,41 @@ class constructorRequiredvsNormal {
 
 class constructorRequiredvsOptional {
   int? a, b, c;
-  constructorRequiredvsOptional(this.a, [this.b, this.c]);
+  constructorRequiredvsOptional(this.a, [this.b = 0, this.c]);
   //constructor bắt buộc truyền a còn lại b, c có thể truyền hoặc không truyền
 }
 
 //Redirecting constructors
+//ta có thể tạo thêm các constructors cùng tên với số lượng đối số khác nhau, và bắt buộc nhập đủ các đối số ấy
+class constructorsRedirecting {
+  int? a, b, c;
+  constructorsRedirecting(this.a, this.b, this.c);
+  constructorsRedirecting.withoutC(this.a, this.b) : c = 1;
+  constructorsRedirecting.withoutBC(this.a)
+      : b = 1,
+        c = 1;
+}
+
 //Factory constructors
+// sẽ tạo ra 1 cái factory constructors với 1 tên khác, mình có thể cho thêm tham số vào và return 1 class extends chính class factory constructors đó
+class constructorFactoryUser {
+  String? name, level;
+  constructorFactoryUser({this.name, this.level});
+  factory constructorFactoryUser.user(String user) {
+    if (user == "Admin") {
+      return Admin(name: "Winter", level: "Intern_Flutter");
+    } else {
+      return User(name: "Fox", level: "Intern");
+    }
+  }
+}
+
+class Admin extends constructorFactoryUser {
+  String? name, level;
+  Admin({this.name, this.level});
+}
+
+class User extends constructorFactoryUser {
+  String? name, level;
+  User({this.name, this.level});
+}

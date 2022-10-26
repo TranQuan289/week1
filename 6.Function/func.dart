@@ -1,3 +1,5 @@
+import 'dart:html';
+
 void main(List<String> args) {
   // cách  viết func thông thường
   print(calculator(3, 4));
@@ -25,3 +27,7 @@ int sum1({required int a, required int b}) => a + b;
 int sum2(int a, [int b = 4]) => a + b;
 //func bắt buộc nhập tên của 2 giá trị b,c(không yêu cầu vị trí)
 int sum3(int a, {required int b, required int c}) => a + b + c;
+//Anonymous functions thì không có tên, ra lệnh làm cái gì đó mà không cần tạo toàn bộ chức năng
+VoidCallback() {
+  //do something
+}

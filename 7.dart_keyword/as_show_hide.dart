@@ -11,9 +11,4 @@ import 'dart:async' hide AsyncError;
 void main(List<String> args) {
   abs.Winter winter = abs.Winter();
   winter.doHomeWork();
-  //as cũng dùng để chuyển đổi kiểu
-  //nhưng mà nó lạ lắm, e chạy vậy nó k ra
-  num a = 1;
-  String b = a as String;
-  print(b);
 }
