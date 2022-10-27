@@ -1,5 +1,3 @@
-import 'dart:html';
-
 void main(List<String> args) {
   // cách  viết func thông thường
   print(calculator(3, 4));

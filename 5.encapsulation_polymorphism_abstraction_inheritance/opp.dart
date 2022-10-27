@@ -11,6 +11,13 @@ class Oto extends Car {
   // tính kế thừa
   String? type;
   Oto([super.nameCar, super.speedCar, this.type]);
+  @override
+  void drive(String nameCar, int speedCar) {
+    print("override");
+    super.drive(nameCar, speedCar);
+  }
+
+  //overloading
   void dirve(String nameCar, int speedCar, String type) {
     // tính đa hình
     print("xe $nameCar đang lái với tốc độ $speedCar km/h thuộc loại $type");

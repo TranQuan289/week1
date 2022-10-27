@@ -1,7 +1,9 @@
 //Abstract methods
-// abstract sẽ tạo ra các methods sau đó những class nào extends Abstract class đó thì sẽ nhận dc các method trên, mình có thể thay đổi nội dung ở trong methods đó
+// abstract dùng để tạo ra methods, các biến,... sau đó những class nào extends Abstract class đó thì sẽ nhận dc các method,các biến,... trên, mình có thể override lại
 abstract class Work {
   void doHomeWork();
+  late List<int> number;
+  late String winter;
 }
 
 abstract class Worked {
@@ -39,11 +41,44 @@ class Fox implements Worked, Winter {
     // method này kế thừa từ  class Winter
     print("doHomeWorkChange");
   }
+
+  @override
+  List<int> number = [1, 2, 3, 4];
+
+  @override
+  String winter = "no";
 }
+
+class Intern implements Winter, Fox {
+  @override
+  List<int> number = [1, 2];
+
+  @override
+  void doHomeWork() {
+    print("something");
+  }
+
+  @override
+  void doHomeWorked() {
+    print("something");
+  }
+
+  @override
+  void doSomeThing() {
+    print("something");
+  }
+
+  @override
+  String winter = "yes";
+}
+
+class Mix extends Fox implements Work {}
 
 void main(List<String> args) {
   Winter winter = Winter();
   Fox fox = Fox();
   winter.doHomeWork();
   fox.doHomeWork();
+  Intern intern = Intern();
+  print(intern.number);
 }
