@@ -1,0 +1,3 @@
+// Operator: Toán tử
+// là các toán tử số học, toán tử so sánh, toán tử gán, toán tử logic, toán tử kiểm tra kiểu, toán tử tử Bitwise và Shift
+/// +, - ,*, /, %,++,--, ==, !=, >,<, >=, <=, as, is, !is, =, *=, %=, >>>=,^=,+=, /=,	<<=,	&=,	|=,-=,	~/=,	>>=, ||, &&,....
